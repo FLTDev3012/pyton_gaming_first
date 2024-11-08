@@ -12,6 +12,9 @@ background = pygame.image.load('assets/bg.jpg')
 # charger notre jeu
 game = Game()
 
+# initialiser l'horloge
+clock = pygame.time.Clock()
+
 running = True
 
 # boucle tant que cette condition est vrai
@@ -23,6 +26,13 @@ while running:
     # appliquer l'image de notre joueur
     screen.blit(game.player.image, game.player.rect)
 
+    # recuperer les projectiles du joueur
+    for projectile in game.player.all_projectiles:
+        projectile.move()
+
+    # appliquer l'ensemble des images de mon groupe de projectiles
+    game.player.all_projectiles.draw(screen)
+
     # verifier si le joueur souhaite aller a gauche ou a droite
     if game.pressed.get(pygame.K_RIGHT) and game.player.rect.x + game.player.rect.width < screen.get_width():
         game.player.move_right()
@@ -31,6 +41,10 @@ while running:
 
     # mettre a jour l'ecran
     pygame.display.flip()
+
+    # limiter la vitesse de la boucle de jeu à 30 FPS
+    clock.tick(120)  # Limite la cadence à 30 images par seconde
+
 
     # si le joueur ferme cette fenetre
     for event in pygame.event.get():
