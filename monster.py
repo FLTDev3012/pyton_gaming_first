@@ -10,7 +10,7 @@ class Monster(pygame.sprite.Sprite):
         self.game = game
         self.health = 100
         self.max_health = 100
-        self.attack = 5
+        self.attack = 0.3
         self.image = pygame.image.load('assets/mummy.png')
         self.rect = self.image.get_rect()
         self.rect.x = 1000 + random.randint(0, 300)
@@ -30,23 +30,18 @@ class Monster(pygame.sprite.Sprite):
 
 
     def update_health_bar(self, surface):
-        # definir une couleur pour notre jauge de vie (vert clair)
-        bar_color = (111, 210, 46)
-        # definir une couleur pour l'arriere plan de la jauge (gris fonce)
-        back_bar_color = (60, 63, 60)
-
-        # definir une couleur pour notre jauge de vie ainsi que sa largeur et son epaiseur
-        bar_position = [self.rect.x + 10, self.rect.y - 20, self.health, 5]
-        # definir la position de l'arriere plan de la jauge de vie
-        back_bar_position = [self.rect.x + 10, self.rect.y - 20, self.max_health, 5]
 
         # dessiner l'arriere plan de notre barre de vie
-        pygame.draw.rect(surface, back_bar_color, back_bar_position)
+        pygame.draw.rect(surface, (60, 63, 60), [self.rect.x + 10, self.rect.y - 20, self.max_health, 5])
         # dessiner notre barre de vie
-        pygame.draw.rect(surface, bar_color, bar_position)
+        pygame.draw.rect(surface, (111, 210, 46), [self.rect.x + 10, self.rect.y - 20, self.health, 5])
 
 
     def forward(self):
         #le deplacement ne se fait que si il y a pas de collision avec un groupe de joueur
         if not self.game.check_collision(self, self.game.all_players):
             self.rect.x -= self.velocity
+        # si le monstre est en collision avec le joueur
+        else:
+            # infliger des degats (au joueur)
+            self.game.player.damage(self.attack)

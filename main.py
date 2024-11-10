@@ -26,6 +26,9 @@ while running:
     # appliquer l'image de notre joueur
     screen.blit(game.player.image, game.player.rect)
 
+    # actualiser la barre de vie du joueur
+    game.player.update_health_bar(screen)
+
     # recuperer les projectiles du joueur
     for projectile in game.player.all_projectiles:
         projectile.move()
@@ -51,7 +54,7 @@ while running:
     pygame.display.flip()
 
     # limiter la vitesse de la boucle de jeu à 30 FPS
-    clock.tick(50)  # Limite la cadence à 30 images par seconde
+    clock.tick(60)  # Limite la cadence à 30 images par seconde
 
 
     # si le joueur ferme cette fenetre
