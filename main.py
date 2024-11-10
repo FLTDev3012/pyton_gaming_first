@@ -33,6 +33,7 @@ while running:
     # recuperer les monstres de notre jeu
     for monster in game.all_monsters:
         monster.forward()
+        monster.update_health_bar(screen)
 
     # appliquer l'ensemble des images de mon groupe de projectiles
     game.player.all_projectiles.draw(screen)
@@ -50,7 +51,7 @@ while running:
     pygame.display.flip()
 
     # limiter la vitesse de la boucle de jeu à 30 FPS
-    clock.tick(120)  # Limite la cadence à 30 images par seconde
+    clock.tick(50)  # Limite la cadence à 30 images par seconde
 
 
     # si le joueur ferme cette fenetre
