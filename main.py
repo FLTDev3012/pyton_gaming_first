@@ -53,6 +53,7 @@ while running:
     # mettre a jour l'ecran
     pygame.display.flip()
 
+
     # limiter la vitesse de la boucle de jeu à 30 FPS
     clock.tick(60)  # Limite la cadence à 30 images par seconde
 
