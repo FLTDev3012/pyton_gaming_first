@@ -10,7 +10,7 @@ class Game:
 
     def __init__(self):
         #definir si notre jeu a commerce ou non
-        self.is_playing = True
+        self.is_playing = False
         # generer notre joueur
         self.all_players = pygame.sprite.Group()
         self.player = Player(self)

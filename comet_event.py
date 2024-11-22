@@ -7,8 +7,9 @@ class CometFallEvent:
     # lors du chargement -> creer un compteur
     def __init__(self, game):
         self.percent = 0
-        self.percent_speed = 33
+        self.percent_speed = 5
         self.game = game
+        self.fall_mode = False
 
         # definir un groupe de sprite pour stocker nos cometes
         self.all_comets = pygame.sprite.Group()
@@ -23,15 +24,17 @@ class CometFallEvent:
         self.percent = 0
 
     def meteor_fall(self):
-        # apparaitre 1 premiere boule de feu
-        self.all_comets.add(Comet(self))
+        # boucle pour les valeurs entre 1 et 10
+        for i in range(1, 10):
+            # apparaitre 1 premiere boule de feu
+            self.all_comets.add(Comet(self))
 
     def attempt_fall(self):
         # la jauge d'evenement est totalement chargee
-        if self.is_full_loaded():
+        if self.is_full_loaded() and len(self.game.all_monsters) == 0:
             print("Pluie de cometes !")
             self.meteor_fall()
-            self.reset_percent()
+            self.fall_mode = True # activer la pluie de cometes
 
 
     def update_bar(self, surface):
@@ -39,8 +42,7 @@ class CometFallEvent:
         #ajouter du pourcentage a la barre
         self.add_percent()
 
-        # apeller la methode pour essayer de declencher la pluie de cometes
-        self.attempt_fall()
+
 
         #barre noir (en arriere plan)
         pygame.draw.rect(surface, (0, 0, 0), [
