@@ -31,7 +31,9 @@ class Game:
     def game_over(self):
         # remettre le jeu à neuf, retirer les monstres, remettre la vie du joueur à 100 et le jeu en attente
         self.all_monsters = pygame.sprite.Group()
+        self.comet_event.all_comets = pygame.sprite.Group()
         self.player.health = self.player.max_health
+        self.comet_event.reset_percent()
         self.is_playing = False
 
     def update(self, screen):
