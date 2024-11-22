@@ -1,5 +1,6 @@
 from player import Player
 from monster import Monster
+from comet_event import CometFallEvent
 import pygame
 
 
@@ -9,11 +10,13 @@ class Game:
 
     def __init__(self):
         #definir si notre jeu a commerce ou non
-        self.is_playing = False
+        self.is_playing = True
         # generer notre joueur
         self.all_players = pygame.sprite.Group()
         self.player = Player(self)
         self.all_players.add(self.player)
+        # generer l'evenement
+        self.comet_event = CometFallEvent()
         # definir un groupe de monstre
         self.all_monsters = pygame.sprite.Group()
         self.pressed = {}
@@ -37,6 +40,9 @@ class Game:
 
         # actualiser la barre de vie du joueur
         self.player.update_health_bar(screen)
+
+        # actualiser la barre d'evenement du jeu
+        self.comet_event.update_bar(screen)
 
         # recuperer les projectiles du joueur
         for projectile in self.player.all_projectiles:
