@@ -36,6 +36,8 @@ class Monster(animation.AnimateSprite):
                 # apeller la methode pour essayer de declencher la pluie de cometes
                 self.game.comet_event.attempt_fall()
 
+    def update_animation(self):
+        self.animate()
 
 
     def update_health_bar(self, surface):
