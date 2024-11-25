@@ -6,8 +6,8 @@ import animation
 #cree une classe qui va gere la notion de monstre dans notre jeu
 class Monster(animation.AnimateSprite):
 
-    def __init__(self, game):
-        super().__init__("mummy")
+    def __init__(self, game, name):
+        super().__init__(name)
         self.game = game
         self.health = 100
         self.max_health = 100
