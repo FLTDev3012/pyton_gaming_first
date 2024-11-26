@@ -53,7 +53,8 @@ while running:
         screen.blit(play_button, play_button_rect)
         screen.blit(banner, banner_rect)
 
-
+    # fixer le nombre de fps sur ma clock
+    clock.tick(FPS)
 
     # mettre a jour l'ecran
     pygame.display.flip()
@@ -82,6 +83,3 @@ while running:
             if play_button_rect.collidepoint(event.pos):
                 # mettre le jeu en mode lancer
                 game.start()
-
-    # fixer le nombre de fps sur ma clock
-    clock.tick(FPS)
