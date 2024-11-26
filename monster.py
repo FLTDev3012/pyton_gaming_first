@@ -17,9 +17,11 @@ class Monster(animation.AnimateSprite):
         self.rect.y = 540 - offset
         self.start_animation()
 
+
     def set_speed(self, speed):
         self.default_speed = speed
         self.velocity = random.randint(1, 3)
+
 
     def damage(self, amount):
         # infliger les degats
@@ -39,6 +41,7 @@ class Monster(animation.AnimateSprite):
 
                 # apeller la methode pour essayer de declencher la pluie de cometes
                 self.game.comet_event.attempt_fall()
+
 
     def update_animation(self):
         self.animate(loop=True)
@@ -61,12 +64,14 @@ class Monster(animation.AnimateSprite):
             # infliger des degats (au joueur)
             self.game.player.damage(self.attack)
 
+
 # definir une classe pour la momie
 class Mummy(Monster):
 
     def __init__(self, game):
         super().__init__(game, 'mummy', (130, 130))
         self.set_speed(3)
+
 
 # definir une classe pour l'alien
 class Alien(Monster):

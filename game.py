@@ -39,6 +39,7 @@ class Game:
         self.comet_event.reset_percent()
         self.is_playing = False
 
+
     def update(self, screen):
         # appliquer l'image de notre joueur
         screen.blit(self.player.image, self.player.rect)
@@ -81,8 +82,10 @@ class Game:
         elif self.pressed.get(pygame.K_LEFT) and self.player.rect.x > 0:
             self.player.move_left()
 
+
     def check_collision(self, sprite, group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
+
 
     def spawn_monster(self, monster_class_name):
         self.all_monsters.add(monster_class_name.__call__(self))

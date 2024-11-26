@@ -17,12 +17,14 @@ class Player(animation.AnimateSprite):
         self.rect.x = 400
         self.rect.y = 500
 
+
     def damage(self, amount):
         if self.health - amount > amount:
             self.health -= amount
         else:
             # si le joueur n'a plus de points de vie
             self.game.game_over()
+
 
     def update_animation(self):
         self.animate()
@@ -42,10 +44,12 @@ class Player(animation.AnimateSprite):
         # demarrer l'animation du lancer
         self.start_animation()
 
+
     def move_right(self):
         # si le joueur n'est pas en collision avec un monstre
         if not self.game.check_collision(self, self.game.all_monsters):
             self.rect.x += self.velocity
+
 
     def move_left(self):
         self.rect.x -= self.velocity

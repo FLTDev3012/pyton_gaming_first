@@ -13,9 +13,11 @@ class AnimateSprite(pygame.sprite.Sprite):
         self.images = animations.get(sprite_name)
         self.animation = False
 
+
     # definir une methode pour demarrer l'animation
     def start_animation(self):
         self.animation = True
+
 
     # definir une methode pour animer le sprite
     def animate(self, loop=False):
@@ -41,6 +43,7 @@ class AnimateSprite(pygame.sprite.Sprite):
             # modifier l'image précédente par la suivante
             self.image = self.images[self.current_image]
             self.image = pygame.transform.scale(self.image, self.size)
+
 
 # definir une fonction pour charger les images d'un sprite
 def load_animation_images(sprite_name):

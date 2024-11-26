@@ -28,12 +28,12 @@ play_button_rect = play_button.get_rect()
 play_button_rect.x = math.ceil(screen.get_width() / 3.33)
 play_button_rect.y = math.ceil(screen.get_height() / 2)
 
-
 # charger notre jeu
 game = Game()
 
 # initialiser l'horloge
 clock = pygame.time.Clock()
+
 
 running = True
 
