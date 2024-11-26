@@ -69,3 +69,5 @@ class Alien(Monster):
 
     def __init__(self, game):
         super().__init__(game, 'alien', (300, 300), 130)
+        self.health = 250
+        self.max_health = 250

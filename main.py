@@ -3,6 +3,11 @@ import math
 from game import Game
 pygame.init()
 
+# definir une clock
+clock = pygame.time.Clock()
+FPS = 60
+
+
 # generer la fenetre de notre jeux
 pygame.display.set_caption("Comet fall Game")
 screen = pygame.display.set_mode((1080, 720))
@@ -54,10 +59,6 @@ while running:
     pygame.display.flip()
 
 
-    # limiter la vitesse de la boucle de jeu à 30 FPS
-    clock.tick(60)  # Limite la cadence à 30 images par seconde
-
-
     # si le joueur ferme cette fenetre
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -81,3 +82,6 @@ while running:
             if play_button_rect.collidepoint(event.pos):
                 # mettre le jeu en mode lancer
                 game.start()
+
+    # fixer le nombre de fps sur ma clock
+    clock.tick(FPS)
