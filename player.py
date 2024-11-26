@@ -36,7 +36,6 @@ class Player(animation.AnimateSprite):
         pygame.draw.rect(surface, (111, 210, 46), [self.rect.x + 50, self.rect.y + 20, self.health, 7])
 
 
-
     def launch_projectile(self):
         # creer une nouvelle instance de la classe projectile
         self.all_projectiles.add(Projectile(self))
