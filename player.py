@@ -43,6 +43,9 @@ class Player(animation.AnimateSprite):
         self.all_projectiles.add(Projectile(self))
         # demarrer l'animation du lancer
         self.start_animation()
+        # jouer le son
+        self.game.sound_manager.play('tir')
+
 
 
     def move_right(self):
